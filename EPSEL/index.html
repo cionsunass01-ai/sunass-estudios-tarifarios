@@ -11,10 +11,25 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+    :root {
+      --bg-page: #ebf7ff;
+      --navy: #0B2341;
+      --cyan-accent: #00BCD4;
+      --cyan-light: #E0F7FA;
+      --sunass-blue: #0071CE;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ebf7ff !important;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-slate-800 antialiased flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen" style="background-color: #ebf7ff !important;">
   
   <div class="bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between text-xs sm:text-sm text-slate-600 shadow-sm sticky top-0 z-50">
     <a href="../index.html" class="inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-blue-800 transition">
@@ -24,7 +39,7 @@
     <span class="text-slate-400 hidden sm:inline">SUNASS — Portal de Estudios Tarifarios</span>
   </div>
   
-  <div class="flex-grow">
+  <div class="flex-grow" style="background-color: #ebf7ff !important;">
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- Application Structure Plan: The SPA mirrors the official SUNASS regulatory fact sheet (ficha resumen, 4-page infographic format) for EPSEL S.A. Sections: 1) Datos Generales — notable: EPSEL is under OTASS's Régimen de Apoyo Transitorio (unlike the other EPS pages built so far) and is classified as "Grande 1" (the first large-scale EPS in this catalog), serving 26 localities across Lambayeque with widely varying continuity/pressure. 2) Diagnósticos (operational, commercial, economic-financial — including a notably high 99.9% wastewater-treatment rate, in contrast with other EPS fichas that disclosed 0%). 3) Inversión y Costos O&M (values in millions of soles, reflecting its scale). 4) Metas de Gestión y Tarifas — table only shows the 5 principal localities disclosed in the ficha; the rest are noted as available in the full estudio tarifario. No "Mi Recibo" bill calculator is included: this ficha only provides average tariffs (S//m3), not a per-category consumption-block tariff table. --><!-- CONFIRMATION: NO SVG graphics used beyond inline icon paths already present in the shared header/nav markup. NO Mermaid JS used. --><title>Panel Interactivo: Ficha Regulatoria EPSEL 2025-2028</title>
 <style>
   :root {

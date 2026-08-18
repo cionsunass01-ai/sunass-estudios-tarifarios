@@ -11,10 +11,25 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+    :root {
+      --bg-page: #ebf7ff;
+      --navy: #0B2341;
+      --cyan-accent: #00BCD4;
+      --cyan-light: #E0F7FA;
+      --sunass-blue: #0071CE;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ebf7ff !important;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-slate-800 antialiased flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen" style="background-color: #ebf7ff !important;">
   
   <div class="bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between text-xs sm:text-sm text-slate-600 shadow-sm sticky top-0 z-50">
     <a href="../index.html" class="inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-blue-800 transition">
@@ -24,7 +39,7 @@
     <span class="text-slate-400 hidden sm:inline">SUNASS — Portal de Estudios Tarifarios</span>
   </div>
   
-  <div class="flex-grow">
+  <div class="flex-grow" style="background-color: #ebf7ff !important;">
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- Application Structure Plan: The SPA mirrors the official SUNASS regulatory fact sheet (ficha resumen, 4-page infographic format) for EMAPA PASCO S.A. Sections: 1) Datos Generales — EP not in RAT, atiende 2 localidades (Pasco y Vicco) con una notable relación inversa: Vicco, la localidad más pequeña, tiene mucha mejor continuidad (23.4 h/d) que Pasco (2.9 h/d). 2) Diagnósticos — como la cobertura difiere por localidad (no hay un dato único a nivel EP en la ficha), se usan gráficos de barras Pasco vs. Vicco en lugar de dona única; ANF sin información (S.I.) en ambas localidades; notable: la EP NO aplicó seis de sus siete incrementos tarifarios disponibles (solo aplicó la fórmula tarifaria del año 1), a diferencia de la mayoría de EPS revisadas hasta ahora; tampoco tiene deuda pendiente. 3) Inversión y Costos O&M (montos menores, reflejando su clasificación "Pequeña"). 4) Metas de Gestión y Tarifas — los valores de continuidad y presión meta a nivel de localidad no se revelan numéricamente en la ficha (solo "C"/"P"), se muestran como "Reporte informativo tarifario". No "Mi Recibo" bill calculator incluido: esta ficha solo entrega tarifas promedio (S//m3). --><!-- CONFIRMATION: NO SVG graphics used beyond inline icon paths already present in the shared header/nav markup. NO Mermaid JS used. --><title>Panel Interactivo: Ficha Regulatoria EMAPA Pasco 2025-2027</title>
 <style>
   :root {

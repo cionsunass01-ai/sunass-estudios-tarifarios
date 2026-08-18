@@ -11,10 +11,25 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+    :root {
+      --bg-page: #ebf7ff;
+      --navy: #0B2341;
+      --cyan-accent: #00BCD4;
+      --cyan-light: #E0F7FA;
+      --sunass-blue: #0071CE;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ebf7ff !important;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-slate-800 antialiased flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen" style="background-color: #ebf7ff !important;">
   
   <div class="bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between text-xs sm:text-sm text-slate-600 shadow-sm sticky top-0 z-50">
     <a href="../index.html" class="inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-blue-800 transition">
@@ -24,7 +39,7 @@
     <span class="text-slate-400 hidden sm:inline">SUNASS — Portal de Estudios Tarifarios</span>
   </div>
   
-  <div class="flex-grow">
+  <div class="flex-grow" style="background-color: #ebf7ff !important;">
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- Application Structure Plan: The SPA mirrors the official SUNASS regulatory fact sheet (ficha resumen, 4-page infographic format) for EMAPA SAN MARTÍN S.A. Sections: 1) Datos Generales — notable: EMAPA San Martín is under OTASS's Régimen de Apoyo Transitorio (second EP in this catalog after EPSEL) and is classified as "Grande 2" (a new size tier, distinct from EPSEL's "Grande 1"), serving 6 localities in San Martín with a wide continuity disparity (Saposoa 23.6 h/d vs. Picota 3.5 h/d). 2) Diagnósticos — notable: Agua No Facturada (ANF) is undisclosed in the ficha (shown as "S.I."), and this is the first EP in the catalog with subsidy targeting already implemented ("Focalización de subsidios: Sí"), contrasting every prior EP's "No". 3) Inversión y Costos O&M (values in soles/millions, reflecting a mid-size scale). 4) Metas de Gestión y Tarifas — notable: unlike prior fichas, this one discloses actual numeric continuidad/presión targets at locality level (not "Reporte informativo tarifario" placeholders); table only shows the 4 principal localities disclosed in the ficha (of 6 total), the rest noted as available in the full estudio tarifario. No "Mi Recibo" bill calculator is included: this ficha only provides average tariffs (S//m3), not a per-category consumption-block tariff table. --><!-- CONFIRMATION: NO SVG graphics used beyond inline icon paths already present in the shared header/nav markup. NO Mermaid JS used. --><title>Panel Interactivo: Ficha Regulatoria EMAPA San Martín 2025-2029</title>
 <style>
   :root {
