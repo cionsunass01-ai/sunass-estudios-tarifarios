@@ -11,10 +11,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
   </style>
 </head>
-<body class="bg-gray-50 text-slate-800 antialiased min-h-screen">
+<body class="bg-gray-50 text-slate-800 antialiased flex flex-col min-h-screen">
   
   <div class="bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between text-xs sm:text-sm text-slate-600 shadow-sm sticky top-0 z-50">
     <a href="./index.html" class="inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-blue-800 transition">
@@ -24,7 +24,8 @@
     <span class="text-slate-400 hidden sm:inline">SUNASS — Portal de Estudios Tarifarios</span>
   </div>
   
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- Application Structure Plan: The SPA mirrors the official SUNASS regulatory fact sheet (ficha resumen, 4-page infographic format) for EPS EMSAPA Calca. Sections: 1) Datos Generales — notable: only a 3-year regulatory period (2025-2027), unlike most other EPS with 5-year periods, and this is its 3rd periodic tariff revision. 2) Diagnósticos (operational, commercial, economic-financial — including a partial-application tariff-increase history: some increases applied, four IPM increases not applied). 3) Inversión y Costos O&M. 4) Metas de Gestión y Tarifas. No "Mi Recibo" bill calculator is included: this ficha only provides average tariffs (S//m3), not a per-category consumption-block tariff table. --><!-- CONFIRMATION: NO SVG graphics used beyond inline icon paths already present in the shared header/nav markup. NO Mermaid JS used. --><title>Panel Interactivo: Ficha Regulatoria EPS EMSAPA Calca 2025-2027</title>
+  <div class="flex-grow">
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- Application Structure Plan: The SPA mirrors the official SUNASS regulatory fact sheet (ficha resumen, 4-page infographic format) for EPS EMSAPA Calca. Sections: 1) Datos Generales — notable: only a 3-year regulatory period (2025-2027), unlike most other EPS with 5-year periods, and this is its 3rd periodic tariff revision. 2) Diagnósticos (operational, commercial, economic-financial — including a partial-application tariff-increase history: some increases applied, four IPM increases not applied). 3) Inversión y Costos O&M. 4) Metas de Gestión y Tarifas. No "Mi Recibo" bill calculator is included: this ficha only provides average tariffs (S//m3), not a per-category consumption-block tariff table. --><!-- CONFIRMATION: NO SVG graphics used beyond inline icon paths already present in the shared header/nav markup. NO Mermaid JS used. --><title>Panel Interactivo: Ficha Regulatoria EPS EMSAPA Calca 2025-2027</title>
 <style>
   :root {
     --navy: #0B2341;
@@ -541,6 +542,30 @@
       if (!mobileMenu.classList.contains('hidden')) { mobileMenu.classList.add('hidden'); }
   }
 </script>
+
+  </div>
+  
+<footer role="contentinfo" class="footer mt-auto" style="background: linear-gradient(108deg, #005B9F 0%, #005B9F 78%, #4BAF18 78.1%, #4BAF18 100%); padding: 0; margin: 0; overflow: hidden;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 20px 24px;">
+    <!-- Fila principal -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; margin-bottom: 24px;">
+      <!-- Logo CION + texto -->
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <img src="./logo%20de%20Equipo%20CION.png" alt="Equipo CION" style="height: 48px; object-fit: contain;" />
+      </div>
+      <!-- Logo SUNASS -->
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="color: #ffffff; font-size: 24px; font-weight: 700; font-family: 'Inter', sans-serif; letter-spacing: -0.5px;">Sunass</span>
+        <span style="color: rgba(255,255,255,0.6); font-size: 13px; font-family: 'Inter', sans-serif;">El regulador del agua potable</span>
+      </div>
+    </div>
+    <!-- Línea divisoria -->
+    <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin: 0; font-family: 'Inter', sans-serif;">© 2026 SUNASS · CION</p>
+      <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin: 0; font-family: 'Inter', sans-serif;">Información pública para mejores decisiones.</p>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
