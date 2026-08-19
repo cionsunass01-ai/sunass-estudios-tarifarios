@@ -216,6 +216,125 @@
   }
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
+
+  /* ════════════════════════════════════════════════════════════════
+     REGLAS RESPONSIVAS MÓVILES (Celulares y Tablets)
+     ════════════════════════════════════════════════════════════════ */
+  
+  /* Contenedor del logo de la EPS: NUNCA deformar ni encoger */
+  .eps-logo-box {
+    flex-shrink: 0 !important;
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+    min-height: 60px !important;
+    background: #ffffff !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+  }
+  .eps-logo-box img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Ajustes en pantallas móviles (< 640px) */
+  @media (max-width: 640px) {
+    /* Tarjeta general */
+    .glass-card {
+      padding: 0.875rem 1rem !important;
+      margin-bottom: 0.875rem !important;
+      border-radius: 12px !important;
+    }
+    
+    /* Layout principal de la tarjeta: logo + título */
+    .card-top-row {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
+    .card-title-col {
+      min-width: 0 !important;
+      flex: 1 !important;
+    }
+    .card-title-col h3 {
+      font-size: 0.95rem !important;
+      line-height: 1.3 !important;
+      margin-bottom: 4px !important;
+      word-break: break-word !important;
+    }
+    
+    /* Fila de metadatos (Ver resumen, duración, descargas) */
+    .card-meta-row {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      align-items: center !important;
+      gap: 6px 10px !important;
+      margin-top: 4px !important;
+      font-size: 0.75rem !important;
+    }
+    .card-meta-row span, .card-meta-row button {
+      font-size: 0.75rem !important;
+    }
+    
+    /* Botones de acción */
+    .card-actions-row {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 7px !important;
+      width: 100% !important;
+      margin-top: 10px !important;
+      padding-top: 8px !important;
+      border-top: 1px dashed #E8ECF1 !important;
+    }
+    .btn-action {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 7px 12px !important;
+      font-size: 0.825rem !important;
+      border-radius: 8px !important;
+    }
+
+    /* Header del sitio en móvil */
+    header.header-bg {
+      padding: 10px 12px !important;
+    }
+    header.header-bg select, header.header-bg input {
+      font-size: 0.85rem !important;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
+    }
+
+    /* Barra flotante del reproductor de audio */
+    #audio-player-bar {
+      padding: 8px 12px !important;
+    }
+    #audio-player-bar .audio-bar-inner {
+      flex-wrap: wrap !important;
+      gap: 6px !important;
+    }
+    #audio-player-bar #audio-player-title {
+      max-width: calc(100% - 40px) !important;
+      font-size: 0.8rem !important;
+      order: 1 !important;
+    }
+    #audio-player-bar button {
+      order: 2 !important;
+      margin-left: auto !important;
+    }
+    #audio-player-bar audio {
+      order: 3 !important;
+      width: 100% !important;
+      height: 32px !important;
+    }
+  }
+
 </style>
 
 <div class="min-h-screen text-slate-800 flex flex-col">
@@ -302,20 +421,18 @@
       <!-- Tarjeta 1 -->
       <div class="glass-card rounded-xl p-6" data-search="emapa huaral lima" data-macro="Central (Lima)">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAgQZCoYXU4SJBRFTCXWVZNAQX_XuW-y8qpQk4oWfdZIEI?e=GjPB3M&amp;download=1" alt="Huaral" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPA HUARAL S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAVqfMs7eCoSY1TM12EJmHXAQw73QiEVHuPGed3d0fbc5M?e=I78Ds3')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPA HUARAL S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-huaral', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-huaral">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-huaral">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/EbraNmoilElOr399XbCo6C8Bl3g3TITVcJleCPPmYJlqcA?e=ah3rUc', 'EMAPA HUARAL S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -336,20 +453,18 @@
       <!-- Tarjeta 2 -->
       <div class="glass-card rounded-xl p-6" data-search="eps aguas de lima norte huacho sayan vegueta végueta lima" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBCuWZZfuODQI7BN9nzksstAZ85VN1mRUzmxfhGnoSTmWg?e=Kflx0p&amp;download=1" alt="Lima Norte" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS AGUAS DE LIMA NORTE SA', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCeuBFGY06aTqWAxfE23h-lAUJpXuH3tmIL5ObULeOfO9s?e=FKNNpZ')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS AGUAS DE LIMA NORTE SA</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-limanorte', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-limanorte">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-limanorte">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDzteIfXFy9SpeLORH8sPT1AXlDUtQh7_nu5iqKwenguAk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=6XVAzW', 'EPS AGUAS DE LIMA NORTE SA')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -370,20 +485,18 @@
       <!-- Tarjeta 3 -->
       <div class="glass-card rounded-xl p-6" data-search="emapa hvca huancavelica" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAZ-qtTyY2SS5o8KwQbJM4vAUK4wVCVcwbQOCcZrMUrRow?e=lecmEk&amp;download=1" alt="HVCA" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPA HVCA SA', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQB2R7nER1ZyTaZa-9QPwlCbAT-E2YDLYDosDaKtbP8mbdo?e=QQ0tbG')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPA HVCA SA</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-hvca', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-hvca">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-hvca">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAnwbXF665nS6RXzer3-r8lASoUyJuYxj7FVuyJMhFytbI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=EG6x0K', 'EMAPA HVCA SA')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -404,20 +517,18 @@
       <!-- Tarjeta 4 -->
       <div class="glass-card rounded-xl p-6" data-search="emapacop pucallpa coronel portillo ucayali" data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBpSkHYKhCET4F2s9eILr7TAVSEz5AsYlWLvRKMCRJLMI8?e=bpqwnn&amp;download=1" alt="EMAPACOP" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPACOP SA', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQBN8ndxd_M6QompCDpzpu0oAeES5e88DZrbQEUZKg4jj4c?e=5nLbBU')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPACOP SA</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emapacop', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emapacop">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emapacop">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDymdWkUCoOQrRZfNfR0QuNAYBhZ1jMwFEtU_EpTOdwOU4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=mg7sFd', 'EMAPACOP SA')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -438,20 +549,18 @@
       <!-- Tarjeta 5 -->
       <div class="glass-card rounded-xl p-6" data-search="eps norpuno nor puno azangaro azángaro huancane huancané puno" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCj7ylItbegTJOUd-9_jEUEAReWO3V1fkc68N9G9FqVLL8?e=DLS27b&amp;download=1" alt="NORPUNO" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS NORPUNO', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQD6tBpBbGHCRrPVlVZJsMCaAQGbtHRZLuXJk8eG_Q0gIz4?e=H34K4o')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS NORPUNO</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-norpuno', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-norpuno">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-norpuno">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAlL2zITquWSriiAhPj1stRAfr00xmwkDqttL1__Tk1Cgg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=U8LsCj', 'EPS NORPUNO')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -472,20 +581,18 @@
       <!-- Tarjeta 6 -->
       <div class="glass-card rounded-xl p-6" data-search="sedajuliaca juliaca puno" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBvLx8U5tmnTKNcjWzHRILzAVhFKk5t1HRcxTRJCPciD5g?e=VIBGbg&amp;download=1" alt="SEDAJULIACA" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDAJULIACA', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAPGOtncCDTSbW7H1zXzj85AXL-inh_ofMnzOHjees3IB4?e=5dbx2V')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDAJULIACA</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedajuliaca', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedajuliaca">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedajuliaca">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQBurXOOh6cbRooFj1FnTryfAaMfuED5vKwLak8ZTRRjO_M?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=y9ILdi', 'SEDAJULIACA')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -506,20 +613,18 @@
       <!-- Tarjeta 7 -->
       <div class="glass-card rounded-xl p-6" data-search="emapa y puno" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBniU6zMC8WQKmUSy8jy9SVATzAQCS1zohdZZGc00N7J8Y?e=DFNw2u&amp;download=1" alt="EMAPA Y" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPA Y S.R.LTDA.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQDzbJvhpi-6QI_qw_uqBX0LAXbZkI7LdA8H-OlNevYWKZ4?e=SvwCiG')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPA Y S.R.LTDA.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emapay', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emapay">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emapay">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAb0FyWnqhRQ7PfzAfqjYJXAVF379zQkOGrVek8BTKuqQE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=WHgaGO', 'EMAPA Y S.R.LTDA.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -539,20 +644,18 @@
       <!-- Tarjeta 8 -->
       <div class="glass-card rounded-xl p-6" data-search="emapa cañete canete lima" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBjKWTdJM95RrSiXsUA3MyJAZf_P1EoEKRPn6VB7kBZSFI?e=2NWLD7&amp;download=1" alt="EMAPA Cañete" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPA CAÑETE S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQB0v8Dls8dCTqa9lLGcEKpTAUBVAa2TadGGERECMbnyOMc?e=D7Vzhc')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPA CAÑETE S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-canete', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-canete">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-canete">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDGoeXW1a4nRbij5SEjcyDOAYHcxvTC0VAf1p2ImDxMg-o?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=G1gDWT', 'EMAPA CAÑETE S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -572,20 +675,18 @@
       <!-- Tarjeta 9 -->
       <div class="glass-card rounded-xl p-6" data-search="eps aguas del altiplano puno" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQDwI3D93xUySb4jS0vjsqbsAaYDRunSXBNyEugD_IKJmt8?e=DTxuJG&amp;download=1" alt="Aguas del Altiplano" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS AGUAS DEL ALTIPLANO S.R.L', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQC1PtmUkP6nQJ2tTJY7gI4gAVmdRCQ22R9OMG42ru9nSUM?e=zBQdAv')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS AGUAS DEL ALTIPLANO S.R.L</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-altiplano', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-altiplano">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-altiplano">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQByAzJ86WmBSoNd-S0Rw5D8Af2JLryOA0bOz6zBdzErLGQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=iiL5Dm', 'EPS AGUAS DEL ALTIPLANO S.R.L')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -605,20 +706,18 @@
       <!-- Tarjeta 10 -->
       <div class="glass-card rounded-xl p-6" data-search="eps sierra central junin" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBChHMhEL5OSJqVVKg3LC77AWN6SmTqdTW44zCcLZawUOM?e=sqPykp&amp;download=1" alt="Sierra Central" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS SIERRA CENTRAL S.R.L.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQBhr9omNLK4QLoUf8CagAWCAdeHnm2DEloLqXutw2TQjFo?e=1J9qUE')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS SIERRA CENTRAL S.R.L.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sierracentral', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sierracentral">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sierracentral">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQC7Is2Z3YtETI_KREIA8ecjATaV85QePbprhHfUAtV1v8Y?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=BcMnOW', 'EPS SIERRA CENTRAL S.R.L.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -638,20 +737,18 @@
       <!-- Tarjeta 11 -->
       <div class="glass-card rounded-xl p-6" data-search="emsapa calca cusco" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBqJLq6ESBZSJS6Y2q8YOxOAeUXMmxzCbyDOyx-WM_5cX4?e=5Pyqyb&amp;download=1" alt="EMSAPA Calca" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS EMSAPA CALCA S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAfAtcqGyOvTIWC4m9Zx8IhAXsnMabpdHbyziWLE7MQN0c?e=5Xaqlf')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS EMSAPA CALCA S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emsapacalca', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emsapacalca">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emsapacalca">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDZQZ2mLYJ-RJDjfwZJ828xAVvDy6__40QDMYWOI8smr-o?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=K24WCB', 'EPS EMSAPA CALCA S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -671,20 +768,18 @@
       <!-- Tarjeta 12 -->
       <div class="glass-card rounded-xl p-6" data-search="epsel lambayeque" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCM0iG12TiAQ4aJkxL1icn4AVHCAMoxTzgjgIAbQ1vep88?e=yOceMV&amp;download=1" alt="EPSEL" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPSEL S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQA-77OVDP8qR66hrtkqsuZaAXRFyIWXnKgkMRxxX7S4OUA?e=4VMtXt')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPSEL S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-epsel', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-epsel">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-epsel">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQCo0uB69s3fQ6hpNSUyGF6sAUdA1MVEA_c2fD3SRJUnDIE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=fZmCbs', 'EPSEL S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -704,20 +799,18 @@
       <!-- Tarjeta 13 -->
       <div class="glass-card rounded-xl p-6" data-search="emapa san martin martín" data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCUe2SjaI-LQI80AsJvBrANAf2qrQosbZ8mgiduDyNLYMQ?e=UdRaqY&amp;download=1" alt="EMAPA San Martín" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPA SAN MARTÍN S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQADGLqhoq34Srrcr9E7vKfJAXvNVRh_anXOTvDFdhNx5_E?e=wOCyha')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPA SAN MARTÍN S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sanmartin', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sanmartin">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sanmartin">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDb524aqzipR60VNhwpUziJAaKN_QmGhBWbhmn_eY-PCic?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=YC98aq', 'EMAPA SAN MARTÍN S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -737,20 +830,18 @@
       <!-- Tarjeta 14 -->
       <div class="glass-card rounded-xl p-6" data-search="emapa pasco" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBSfTRVOt87TKMlfeElTwbrAZGHdmVRt3OzoZnjBKRFFs8?e=DEqFcp&amp;download=1" alt="EMAPA Pasco" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPA PASCO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQBy_FgcYxpISawWU_P-CmQAAUI4_Ft5gXYGpYCsTW90Qbs?e=OOCTC2')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPA PASCO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-pasco', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-pasco">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-pasco">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAnCfFaGup8QYIzCtMuDaj4AS9ufeNcbtrszs8zh2HYV0o?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=3iDkIi', 'EMAPA PASCO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -770,20 +861,18 @@
       <!-- Tarjeta 15 -->
       <div class="glass-card rounded-xl p-6" data-search="sedacaj cajamarca" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQD8XfWIb5IgTLqDl4qHTQsfAWR3rk_Xce_rmVHXkfctqxc?e=bf6hrh&amp;download=1" alt="SEDACAJ" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDACAJ S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAZ8_e28l7VTLvB8oJgSAGkAYopHjntuOLn0PO4WfPQuNE?e=aaM6ls')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDACAJ S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedacaj', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedacaj">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedacaj">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQD5Lgww3FgQQ4qBrYy787PBAaAr_eDbyVRf6ejZbsV-_Kg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=X2w7Q1', 'SEDACAJ S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -803,20 +892,18 @@
       <!-- Tarjeta 16 -->
       <div class="glass-card rounded-xl p-6" data-search="eps ilo moquegua" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQDLALsw5w7sT5C0nMuEhS1xAYS6KYhG9Br1mBmMHEhoUgc?e=ZWKckK&amp;download=1" alt="EPS Ilo" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS ILO S.A', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQBW1zhbpOv6RrhtRgzTI9jYASnF2htZ7PCDeJ86s-7jX1Y?e=TcGx2z')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS ILO S.A</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-ilo', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-ilo">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-ilo">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQCpZnkXNkKgRYv7g0abHiSRAbqsynw8qDzWBnOx0Br0-MY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=6mqRqB', 'EPS ILO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -836,20 +923,18 @@
       <!-- Tarjeta 17 -->
       <div class="glass-card rounded-xl p-6" data-search="eps barranca lima" data-macro="Central (Lima)">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQA18mTiFS8QQalcETCLz3dGAX906NFjBs-R5yGZ5zWBJMk?e=t4ch3E&amp;download=1" alt="EPS Barranca" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS BARRANCA S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCGhAN5rj2yRI4u2SGKLInuATbAPL_IHykALAwEOOKx784?e=9h8FUV')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS BARRANCA S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-barranca', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-barranca">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-barranca">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQBFD2Wq6moGQq2gG-gF9NcmAa4gsdkN30wwApaSfpZUPPA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=fXDrqA', 'EPS BARRANCA S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -870,20 +955,18 @@
       <!-- Tarjeta 18 -->
       <div class="glass-card rounded-xl p-6" data-search="eps maranon s.a. cajamarca" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAzCT_Y-eqsSZg6P7u4ni3oAY2uu154At2ml7qcQZ_BWHM?e=uEY2oG&amp;download=1" alt="EPS MARAÑÓN S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS MARAÑÓN S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQDK48VNN01fQrrSteqlV_VrAZ384aayxZZz0urJIyQGiSI?e=xDWvPj')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS MARAÑÓN S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-maran', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-maran">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-maran">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAyo04cvsMpQISoMJv_CJmgAe6at3DiBwmWlJiMpbczXQY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=j9pv5T', 'EPS MARAÑÓN S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -903,20 +986,18 @@
       <!-- Tarjeta 19 -->
       <div class="glass-card rounded-xl p-6" data-search="unidad 002 tumbes" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBSN17lf6WfQb5zcwoJtMMZAW6WFJboyu5bnOxaZNs8obw?e=3gElDR&amp;download=1" alt="Unidad 002 Tumbes" class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'Unidad 002 Tumbes', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQADwnShzKZrS7k02vgNmJXMAZQo51nbrL4BlJlUDWLjinA?e=1p3tYw')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">Unidad 002 Tumbes</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-unidad002tumbes', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-unidad002tumbes">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-unidad002tumbes">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDU5CN8UkayTpoElhAkr-tIAYDzC8ka3v27bWiZE5Ep-no?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=Qcnb7v', 'Unidad 002 Tumbes')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -936,20 +1017,18 @@
       <!-- Tarjeta 20 -->
       <div class="glass-card rounded-xl p-6" data-search="eps grau s.a. piura" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBrCdqsTN9LS7ufTt3M3UYwAcd0A_w4Nv66edWa3OiYvcM?e=Vcop4t&amp;download=1" alt="EPS GRAU S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS GRAU S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQD5J-F55kk1SKtZgV_FdceHAat6eREk8bQt7OQULTbIF5k?e=6mcnXC')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS GRAU S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-grau', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-grau">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-grau">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQBDXncPEqV5SqpLuPDVxV8sAb71kWKMYVz5RT_wScUGo58?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=bFEca7', 'EPS GRAU S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -969,20 +1048,18 @@
       <!-- Tarjeta 21 -->
       <div class="glass-card rounded-xl p-6" data-search="sedalib s.a. la libertad" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCNyTxbJ_feTZIO7i8y0M8UASUCBrXXx4l5NE_qqW2av8A?e=m6xvau&amp;download=1" alt="SEDALIB S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDALIB S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCwMGt4XQ5FTrD0jCvqsMlVAeoiBU09dY3qE6BK1hK3cZs?e=A9LX1w')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDALIB S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedalib', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedalib">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedalib">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAW3Ksho4UrTbq0TGfyNIxqAaYgBMN7uTKUd_-Z6x4OI_s?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=kUIFTN', 'SEDALIB S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1002,20 +1079,18 @@
       <!-- Tarjeta 22 -->
       <div class="glass-card rounded-xl p-6" data-search="sedachimbote s.a. ancash" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQA8lReOjrYjTrJl7NXo9llrAfRKRxNUocBNrdGCeYWPY8c?e=XYDP8t&amp;download=1" alt="SEDACHIMBOTE S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDACHIMBOTE S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQACoY8_uJnMQ6oeItCul_z5AW-D9ey5g3KMNJ67ttctVMI?e=D5S9Yz')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDACHIMBOTE S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedachimbote', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedachimbote">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedachimbote">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDz_kOUDVoVTpISdwUnQxgKAWnJWhi9u-doUriUQsVvBEs?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=G5slCg', 'SEDACHIMBOTE S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1035,20 +1110,18 @@
       <!-- Tarjeta 23 -->
       <div class="glass-card rounded-xl p-6" data-search="eps chavin s.a. ancash" data-macro="Norte">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAUyyvC_4zdQ4CR1Ia9Via-AfkcXwpSEzHJXVv7Im5Gybc?e=xSKg7A&amp;download=1" alt="EPS CHAVIN S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS CHAVIN S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQA8fM-Q0xKVSp7E48LOXVyIAWcPJ-PTZx1zZag8KRzzMfk?e=A8x7eg')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS CHAVIN S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-chavin', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-chavin">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-chavin">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDEQzo6H0GpTbEF2PFGhXVDAbT48h5p5ZIaTNF8sYxwz5w?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=z4vwXY', 'EPS CHAVIN S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1068,20 +1141,18 @@
       <!-- Tarjeta 24 -->
       <div class="glass-card rounded-xl p-6" data-search="sedapal s.a. lima" data-macro="Central (Lima)">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQD8DwxEqAU8Q69gM_Sr98kyAbAYwQsUd1w-ZmEsgof2mVU?e=RVC9ar&amp;download=1" alt="SEDAPAL S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDAPAL S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCb9iNx4BwpTKI5uZA0vonEAUn8e47wPkvrpfmrnqfIy3w?e=MvDu3J')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDAPAL S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedapal', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedapal">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedapal">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQD9Iw1MMwm8S5SxkStX4LvIAZbwbvmWnb38jSqMKzhyCFE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=Rt9O9q', 'SEDAPAL S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1101,20 +1172,18 @@
       <!-- Tarjeta 25 -->
       <div class="glass-card rounded-xl p-6" data-search="seda ayacucho s.a." data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQB9vyQfCdGeQa_3xA_Z3Mj7AX2NTLzRpEubuA6aXZkxsMQ?e=s64tgu&amp;download=1" alt="SEDA AYACUCHO S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDA AYACUCHO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQD-d8t_2ic_SqEKq6HvXvNBARep5x2I8csen-2PYqvFF-0?e=MXjFpo')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDA AYACUCHO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedaayacucho', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedaayacucho">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedaayacucho">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQApwJ5_Rw3ETaDMpFeBfNvYAcPxSQSJWkeT4UmEibNoQL8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=ehTrDi', 'SEDA AYACUCHO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1134,20 +1203,18 @@
       <!-- Tarjeta 26 -->
       <div class="glass-card rounded-xl p-6" data-search="eps emapica s.a." data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQDzW-J3sGoRTZHGTtHBLU5TARncoZOlYiquJ6hlWmzDa6E?e=imzTT3&amp;download=1" alt="EPS EMAPICA S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS EMAPICA S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQDrJUsslHTjSaQB0lYtFsoAARUtVd25QhKIEvA7jMTjXrk?e=HcNFPi')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS EMAPICA S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emapica', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emapica">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emapica">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQA3FVKuS1gARJiIJ1XEYymqAZPbpAobK9_T4B7GV1gdC3g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=jhgSOV', 'EPS EMAPICA S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1167,20 +1234,18 @@
       <!-- Tarjeta 27 -->
       <div class="glass-card rounded-xl p-6" data-search="emapavigs s.a. ica" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCBJnyAJ9QbRZqbzATnQ2E-AUru8UpgEfXg-8jsLueN22g?e=kjm3ca&amp;download=1" alt="EMAPAVIGS S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPAVIGS S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQApdE_4qT1nTp6-cHDkW9zPAZ75BEhoGuqxRd9SPoGzcjk?e=KDj4dP')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPAVIGS S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emapavigs', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emapavigs">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emapavigs">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAqQDLp4xBwT5_eHVsDg6v0AdXFHxygFmcsDcwB3mk6adg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=ffRUJN', 'EMAPAVIGS S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1200,20 +1265,18 @@
       <!-- Tarjeta 28 -->
       <div class="glass-card rounded-xl p-6" data-search="emapisco s.a. ica" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBwlouTrG-MQ7Lr_dXoDc-BASjsZMp7DTsxx8TNF4TumPk?e=a7MVZ5&amp;download=1" alt="EMAPISCO S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPISCO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCB6DMos0HaT5Y9DBvhNXwfAdysQFS38Md_WPTnEPMBNJQ?e=HNES5A')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPISCO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emapisco', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emapisco">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emapisco">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQC3BL-t7iOUR5IGTZ-sZ8BFASvt_-lxJu40O3f2PYFibDg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=9KePsj', 'EMAPISCO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1233,20 +1296,18 @@
       <!-- Tarjeta 29 -->
       <div class="glass-card rounded-xl p-6" data-search="eps semapach s.a. ica" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQDEhovM1R5zSYUY2d5uHB2AAa8yFiD1FgaRqQjAFQQ2zto?e=JfU6WI&amp;download=1" alt="EPS SEMAPACH S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS SEMAPACH S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAmHKcQYr6rSr9MBLFvGwhcAfuevTusq9qO__4j7-qMUrY?e=mKh8HW')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS SEMAPACH S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-semapach', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-semapach">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-semapach">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQCSmx9NKICVSol0iXh1MjZbARL-y-Rc87NcASx2uaO9P9s?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=m9ca9Y', 'EPS SEMAPACH S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1266,20 +1327,18 @@
       <!-- Tarjeta 30 -->
       <div class="glass-card rounded-xl p-6" data-search="emusap s.a. amazonas" data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAvgLzIuNdRRJ3458aTTjWyAWV2KNiK8s_KszubHd0wD3E?e=xMeval&amp;download=1" alt="EMUSAP S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMUSAP S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCT-SneYDZPQLHwHwbJ_6AmAZaMjPYca_IDuFBZSh8_VkE?e=lZ6Cr5')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMUSAP S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emusap', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emusap">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emusap">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDqefflc2lKSoWUBVQN8OT-AYim6jT7p9P9TQpooxt4_ls?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=IQgrT9', 'EMUSAP S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1299,20 +1358,18 @@
       <!-- Tarjeta 31 -->
       <div class="glass-card rounded-xl p-6" data-search="emapab s.a. amazonas" data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBQpDfYAYgIQZ7EDuqBmT23AdaORqjwNS4xfxoUbtYUovY?e=ktyhfY&amp;download=1" alt="EMAPAB S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMAPAB S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQDMxxPR0rHaQYOe41h5jtKXAWh9ZrD3ULk6svHeeeoEq8g?e=Bx3OCS')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMAPAB S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emapab', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emapab">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emapab">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQCrQk4JsGa-SbblCW6oPp0rARVplrvD1TIb8DScsTu8cyU?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=4kjLrY', 'EMAPAB S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1332,20 +1389,18 @@
       <!-- Tarjeta 32 -->
       <div class="glass-card rounded-xl p-6" data-search="epssmu s.a. amazonas" data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCfgSvNk9XrQIucapflB-BSARt4yBbaW4SF6CWzEEIFxnQ?e=K0CBW9&amp;download=1" alt="EPSSMU S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPSSMU S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCasfiA8kciSKMWhvwL3IiaAUUqDOxmUv3BAGYzmPdNiHw?e=7TW6eL')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPSSMU S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-epssmu', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-epssmu">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-epssmu">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQBHTA1sGkzmQ6WCxakthwzSAUomkULBwfRwMMpTnf2BvOw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=Q9uNna', 'EPSSMU S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1365,20 +1420,18 @@
       <!-- Tarjeta 33 -->
       <div class="glass-card rounded-xl p-6" data-search="sedaloreto s.a." data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQC1gMwBmXCJQ4sLzzw4ay7RAcQqBbbS0aXyFYk0Oe6J-y8?e=ukQlFP&amp;download=1" alt="SEDALORETO S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDALORETO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAZiKOmcXUQSbMWq6NEpGAcAeWkUDJ75gvSk4K3wPKzh0g?e=Hr1rH5')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDALORETO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedaloreto', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedaloreto">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedaloreto">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAeJY_nj1UoS4UCfLz2vOiJAcQUnpawVxiGLWu6uCS3gQ8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=REOXAb', 'SEDALORETO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1398,20 +1451,18 @@
       <!-- Tarjeta 34 -->
       <div class="glass-card rounded-xl p-6" data-search="eps rioja s.a. san martin" data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQD2ZCzs292RTo91ZVAMy3LsAbwjHl0idkp-HzBG_XVzWd0?e=qMo692&amp;download=1" alt="EPS RIOJA S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS RIOJA S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAY3lXgKWH9RblMfzA06rAJAXbc7ieHc3pfWlk8EaaSawk?e=ayJSEE')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS RIOJA S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-rioja', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-rioja">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-rioja">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDzWCStozJaSIMjUx330N2fAXPCyAdof9RRwMuo_1qMzY4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=mgcfm5', 'EPS RIOJA S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1431,20 +1482,18 @@
       <!-- Tarjeta 35 -->
       <div class="glass-card rounded-xl p-6" data-search="eps moyobamba s.a. san martin" data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQDMA-Fb4f-WSapwMzpfazTMAUss1WHr6n6mleAdIZTWNic?e=mMTXM6&amp;download=1" alt="EPS MOYOBAMBA S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS MOYOBAMBA S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQChupbo-TIeQqtOZMed4DcIAS45Nd0mXV9WVHdCE_wZriE?e=dJvJFt')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS MOYOBAMBA S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-moyobamba', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-moyobamba">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-moyobamba">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQA7oOKt9ddEQa4mZaIAlcRsAWzAjkGndxGMmp9gapZd3yg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=yNP52G', 'EPS MOYOBAMBA S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1464,20 +1513,18 @@
       <!-- Tarjeta 36 -->
       <div class="glass-card rounded-xl p-6" data-search="eps seda huanuco s.a." data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQD7M9aR21QeRrf5TXwQgZ-hAWZ3PH6Yq25dJKGwqAwSHu8?e=XPAcue&amp;download=1" alt="EPS SEDA HUÁNUCO S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS SEDA HUÁNUCO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAI_FF52TMbRatexUjdrF4dARGx02iat_AGGN64tr3DpWw?e=i5kVxk')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS SEDA HUÁNUCO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedahunuco', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedahunuco">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedahunuco">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDsxBzXmSLuTKDJl8BO8WIEAf4L9q7U7S3EDXzWDAO_aE0?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=WaLfFJ', 'EPS SEDA HUÁNUCO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1497,20 +1544,18 @@
       <!-- Tarjeta 37 -->
       <div class="glass-card rounded-xl p-6" data-search="emsapa yauli la oroya s.r.l. junin" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAMZPSWE0RZT6z6ge5F-0UiAUUyZSQs948ai8-gJmSzMKA?e=CJfBmq&amp;download=1" alt="EMSAPA YAULI LA OROYA S.R.L." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMSAPA YAULI LA OROYA S.R.L.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQC3qr-QLpPITaDZhN79mj6AASoNGCvi96gV61HK_sbbBjw?e=Vde0ws')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMSAPA YAULI LA OROYA S.R.L.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emsapayaulilaoroya', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emsapayaulilaoroya">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emsapayaulilaoroya">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAACHkAixWzQbgHX4eMDiWSAZBm4SHfZc_han15EdJARpE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=8JR3im', 'EMSAPA YAULI LA OROYA S.R.L.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1530,20 +1575,18 @@
       <!-- Tarjeta 38 -->
       <div class="glass-card rounded-xl p-6" data-search="eps mantaro s.a. junin" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQB4OyTpXYVXSLv016faEKl-ARiPe3B--u0r6ErcvPvtTVM?e=7cEhfu&amp;download=1" alt="EPS MANTARO S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS MANTARO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQA3n-l97z9zSbMrC_zABWcXAVJIskyLOGQVwbBO-gYqVt0?e=Jqo53j')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS MANTARO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-mantaro', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-mantaro">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-mantaro">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDydh4tcCGqSoIiiN03Sv-3AUtopCgm2KWJwwgeMH2EIwE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=lrbs6l', 'EPS MANTARO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1563,20 +1606,18 @@
       <!-- Tarjeta 39 -->
       <div class="glass-card rounded-xl p-6" data-search="eps sedam huancayo s.a. junin" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAD4GJosX9tSbkvkML1nUBPAU1x9O0gENbiwqAoQMPjX8U?e=l60Fiy&amp;download=1" alt="EPS SEDAM HUANCAYO S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS SEDAM HUANCAYO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQC7nckv5iCkTLfHgHgvgXtyAUwguKCC9w-AqzJ1rU8y300?e=lpSmK0')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS SEDAM HUANCAYO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedamhuancayo', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedamhuancayo">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedamhuancayo">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDxCKRx2DsiTakh64ReBKeOAS-6WUCpy7HCBMC_wBYRzSc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=YkXjH2', 'EPS SEDAM HUANCAYO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1596,20 +1637,18 @@
       <!-- Tarjeta 40 -->
       <div class="glass-card rounded-xl p-6" data-search="eps selva central s.a. junin" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQDuvuD5GGI9S6NEY2p53LYnATJMX3C1xw--RGcdXtPdbVY?e=qkpsVr&amp;download=1" alt="EPS SELVA CENTRAL S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS SELVA CENTRAL S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQC4EyRLQtu1SqZnZPVqUggWAclIPCUWXF_Z5al127N8tiw?e=SBMgkc')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS SELVA CENTRAL S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-selvacentral', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-selvacentral">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-selvacentral">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQBkbJVYAl2kTrhf2mwsrZawARyqsb1qeFkSrEgVhFRed9U?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=3YzW6p', 'EPS SELVA CENTRAL S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1629,20 +1668,18 @@
       <!-- Tarjeta 41 -->
       <div class="glass-card rounded-xl p-6" data-search="eps emapat s.a. madre de dios" data-macro="Oriente">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCINUJwfDp1RIBLLyH74efjAeaTOsX6giz3iswqY-HQ8R8?e=byyOd6&amp;download=1" alt="EPS EMAPAT S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS EMAPAT S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCctX9Ir9qCTa47bTRS_tHuAUAeyVUz8bHa_kJX7FLiK1Y?e=rhrm23')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS EMAPAT S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emapat', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emapat">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emapat">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQD5yrCsF3oiS75FM2vmSXBeAXK0nKHb_w5mBOXkkFpIf1c?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=1GYeHr', 'EPS EMAPAT S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1662,20 +1699,18 @@
       <!-- Tarjeta 42 -->
       <div class="glass-card rounded-xl p-6" data-search="sedacusco s.a." data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBC20JeWDUjT74WhY2BaIUgAQcjwNDD-JLYhrvgEYakL_s?e=8YSNRA&amp;download=1" alt="SEDACUSCO S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDACUSCO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAsiJioiz71TpCMtuTKWqwjAddPQwpXvhYeqZHIrbe6Ijs?e=VrSM37')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDACUSCO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedacusco', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedacusco">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedacusco">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQCbfVhuzESNQajGmeIPmiUrASyNC8oIgdYZKs4FpiH0vf8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=WriN0J', 'SEDACUSCO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1695,20 +1730,18 @@
       <!-- Tarjeta 43 -->
       <div class="glass-card rounded-xl p-6" data-search="eps emaq s.a. cusco" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAFZUP5u_DdQYQeRl90aou2AUkxjNtl-DW1Cr_ZGUMTLi8?e=dJTKxW&amp;download=1" alt="EPS EMAQ S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS EMAQ S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQA9p7nDjbE1SYfyZfSzntXfAYDQ41g_8MmjrIEFC8zxDuM?e=bWEjXL')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS EMAQ S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emaq', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emaq">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emaq">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQCZ5lzoY_joTZLvJmXFKm9qAWNmWZ5di78csN3yraXpryA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=gFjRiU', 'EPS EMAQ S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1728,20 +1761,18 @@
       <!-- Tarjeta 44 -->
       <div class="glass-card rounded-xl p-6" data-search="empssapal s.a. cusco" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQBnvPyHD23tQonU8bKqCiIjAZsmyIUCMPDTaA9hRNHKllU?e=mgGMe7&amp;download=1" alt="EMPSSAPAL S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMPSSAPAL S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQA_upEauwQNQ4DN67codiziAYqqrACb5YtowLOLleR11vU?e=nRe675')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMPSSAPAL S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-empssapal', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-empssapal">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-empssapal">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAsjqgaMp95SryIxWH_WEKbAbVVEnYvF69Zn70TSBjmMas?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=8acU3P', 'EMPSSAPAL S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1761,20 +1792,18 @@
       <!-- Tarjeta 45 -->
       <div class="glass-card rounded-xl p-6" data-search="emusap abancay s.a. apurimac" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQDFxvBdT58eR5T_OWmdCT0-AQbH0QcJ2vGPfejt8EO4-Os?e=pWHvzM&amp;download=1" alt="EMUSAP ABANCAY S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMUSAP ABANCAY S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQCCfyhsCEfYS4owaRFKpG4tAQsDwK6JTC8BF1fHqXQqiBY?e=gwCNON')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMUSAP ABANCAY S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emusapabancay', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emusapabancay">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emusapabancay">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDTvDPYZ-iOTYFCqNI0R73gAbQ13yfsMyRyMO8g0akjFlE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=nqvilI', 'EMUSAP ABANCAY S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1794,20 +1823,18 @@
       <!-- Tarjeta 46 -->
       <div class="glass-card rounded-xl p-6" data-search="emsap chanka s.a. apurimac" data-macro="Centro">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQAWSYiUjJ6PQYmF9KJhLZZIAVAiBWw0Mf6SXr08QcDtpVc?e=gdKS7w&amp;download=1" alt="EPS CHANKA S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS CHANKA S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQA6LY0mQcJuRIWcMxwdM__tAd5CJXQ9wWccaWHWlifFfp4?e=mWpum6')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMSAP CHANKA S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emsapchanka', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emsapchanka">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emsapchanka">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAzjtT5vqIuTYkwXZp3WuRhAQe5dlwB2dAwEmoKFRV3BJY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=VMQ4VA', 'EMSAP CHANKA S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1827,20 +1854,18 @@
       <!-- Tarjeta 47 -->
       <div class="glass-card rounded-xl p-6" data-search="sedapar s.a. arequipa" data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQB3p_mEkgE4TKN77ibeWtRFAfGmCXghT3O7nihmh-YMrNo?e=ER4r3A&amp;download=1" alt="SEDAPAR S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'SEDAPAR S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQBxQhe8hXUOTLO8nRoyZJlGAdaJN2wfG9KBOeutd3-xGd0?e=q45jZx')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">SEDAPAR S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-sedapar', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-sedapar">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-sedapar">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQBPfcVazI2sSY_whjXvNnn-AWh3dEDhnKeiwFeI_FFGq-A?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=2fHyKZ', 'SEDAPAR S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1860,20 +1885,18 @@
       <!-- Tarjeta 48 -->
       <div class="glass-card rounded-xl p-6" data-search="eps moquegua s.a." data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCxzb7SEYg-RKx1aGmI6RsBAVzjvyH7ZfvpVtdqaj6CEl4?e=uCEI4I&amp;download=1" alt="EPS MOQUEGUA S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS MOQUEGUA S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAPrv4sQw2QTIXoXTZLaXzeAWWGCmw4ogtZlskQfmOckGU?e=bwKYrc')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS MOQUEGUA S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-moquegua', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-moquegua">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-moquegua">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQAsyE8tAepBR5GIWgyRwk-QAQkwZzaPY_Yxq7KvZCgGKxs?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=A35pQf', 'EPS MOQUEGUA S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1893,20 +1916,18 @@
       <!-- Tarjeta 49 -->
       <div class="glass-card rounded-xl p-6" data-search="eps tacna s.a." data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCX_0EuTuAvRrTDTpwMEngSAVphFQEzJnZAVlMZpKCBm2c?e=N1vjZK&amp;download=1" alt="EPS TACNA S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EPS TACNA S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQA22hHdVlGsTqqxMcRu5IkcAe2WyRxqCiuMgu1UCsgN_Xo?e=EMAVQ3')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EPS TACNA S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-tacna', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-tacna">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-tacna">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQDN9sQTNx0pT4tTPk5yY5IoAZYN5fNzlB3Ytoa2YGc_q9s?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=DETy1D', 'EPS TACNA S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1926,20 +1947,18 @@
       <!-- Tarjeta 50 -->
       <div class="glass-card rounded-xl p-6" data-search="emsapuno s.a." data-macro="Sur">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center space-x-5">
-            <div class="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+          <div class="card-top-row flex items-start sm:items-center space-x-3 sm:space-x-4"><div class="eps-logo-box">
               <img src="https://sunassgobpe-my.sharepoint.com/:i:/g/personal/cion_sunass_gob_pe/IQCGWQtBOrkeQ5m09SEA_cgjATRA7I1FKdN-OiABLUdd0xc?e=GaZzdc&amp;download=1" alt="EMSAPUNO S.A." class="max-w-full max-h-full object-contain eps-logo-clickable" onclick="event.stopPropagation(); openLightbox(this.src, 'EMSAPUNO S.A.', 'https://sunassgobpe-my.sharepoint.com/:b:/g/personal/cion_sunass_gob_pe/IQAVlQ6qmqdURZ-cuH5Q0RMOATvL6_FsuEXPeSLW-mvXBXM?e=qcodZq')" />
-            </div>
-            <div>
+            </div><div class="card-title-col">
               <h3 class="text-lg font-bold" style="color: var(--navy);">EMSAPUNO S.A.</h3>
-              <div class="flex items-center space-x-3 mt-1">
+              <div class="card-meta-row flex flex-wrap items-center gap-2 mt-1">
                 <button type="button" onclick="toggleSummary('summary-emsapuno', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium badge-approved"><span class="summary-toggle-label">Ver resumen</span><svg class="w-3 h-3 summary-toggle-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span id="duration-emsapuno">--:--</span></span>
                 <span class="text-sm text-slate-500 flex items-center whitespace-nowrap"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> <span id="downloads-emsapuno">-- descargas</span></span>
               </div>
             </div>
           </div>
-          <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <div class="card-actions-row flex items-center space-x-2 flex-wrap gap-2">
             <button onclick="event.stopPropagation(); playAudio('https://sunassgobpe-my.sharepoint.com/:u:/g/personal/cion_sunass_gob_pe/IQBJmSL-EtrvSbmbfXvj-6dqAWrBs6BfogMoyrTFitcJUB0?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=GXQtB3', 'EMSAPUNO S.A.')" class="btn-action" title="Reproducir un resumen en audio con los puntos clave del estudio">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg> Escuchar audio
             </button>
@@ -1987,7 +2006,7 @@
 
 <!-- Reproductor de audio flotante: se activa desde cualquier tarjeta y permanece en la misma página -->
 <div id="audio-player-bar" class="hidden fixed bottom-0 left-0 right-0 z-[60] bg-white border-t border-slate-200 px-4 py-3 sm:px-8" style="box-shadow: 0 -2px 10px rgba(0,0,0,0.08);">
-  <div class="max-w-5xl mx-auto flex items-center gap-4">
+  <div class="audio-bar-inner max-w-5xl mx-auto flex items-center gap-3">
     <svg class="w-5 h-5 flex-shrink-0" style="color: var(--sunass-blue);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
     <span id="audio-player-title" class="text-sm font-medium flex-shrink-0 whitespace-nowrap" style="color: var(--navy); max-width: 40%; overflow: hidden; text-overflow: ellipsis;">Reproduciendo audio</span>
     <audio id="global-audio-player" controls class="flex-1" style="max-width: 100%; height: 36px;"></audio>
